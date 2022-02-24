@@ -962,7 +962,7 @@ namespace Curso_OO
             */
 
             // -----------------------------------------------------
-            
+
             /* Utilizando Local e UTC
             DateTime d1 = new DateTime(2000, 8, 15, 13, 5, 58, DateTimeKind.Local);
             DateTime d2 = new DateTime(2000, 8, 15, 13, 5, 58, DateTimeKind.Utc);
@@ -977,6 +977,30 @@ namespace Curso_OO
             do computador do usuário, essa data é alterada para seu fuso-horário.
 
             Console.WriteLine(d2);
+            */
+
+            // ------------------------------------------------------------------
+
+            /* GIT comandos
+            git init -> primeira vez em cada projeto (git controla os arquivos)
+            git config --global user.name "Seu Nome" -> Fica salvo após o commit, seu nome
+            git config --global user.email "Email" -> Fica salvo após o commit, seu email
+            git status -> ver a situação dos commit (vermelho -> não rastreados / verde -> pronto pra commit)
+            git add . -> adiciona todos os "vermelhos para verde" para serem commitados
+            git log -> para ver os hitóricos de versões mostrando o usuário que modificou
+            git log --oneline -> para ver os nomes e os históricos das versões
+            git commit -m "Nome do Commit" -> para commitar os commit em verde.
+            git clean -df (MAIS O COMANDO EM OUTRA LINHA) git checkout -- .    -> para voltar para o commit feito anteriormente
+            git reset --soft HEAD~1 -> remover o último commit mantendo as alterações dos arquivos
+            git reset --hard HEAD~1 -> remover o último commit não mantendo as alterações dos arquivos
+            git checkout <código do commit> -> serve para visualizar um commit feito anteriormente
+            git checkout <nome da branch> -> serve para voltar ao commit atual.
+            git remote add origin <URL do repositório remoto> -> Serve para associar nosso repositório local a um remoto (apelido origin)
+            git push -u origin (main/master) -> para subir o repositório local para o GitHub
+            git push -> Após ter feito o comando acima, basta só utilizar esse para subir o repositório.
+            git clone <URL do repositório remoto> -> serve para pegar o repositório remoto e colocá-lo em seu computador.
+            git pull origin (master/main) -> serve para atualizar seu repositório local
+
             */
 
             Console.ReadLine();
