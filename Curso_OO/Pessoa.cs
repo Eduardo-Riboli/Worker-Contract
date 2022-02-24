@@ -1,6 +1,6 @@
 ﻿namespace Curso_OO
 {
-    internal class Pessoa
+    internal class Pessoa 
     {
         public string nome;
         public int idade;

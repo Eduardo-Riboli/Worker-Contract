@@ -2,7 +2,7 @@
 using System.Globalization;
 namespace Curso_OO
 {
-    internal class Produto3
+    internal class Produto3 
     {
         // Primeiro: Algum atributo privativo;
         private string _nome;

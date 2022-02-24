@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
 
 namespace Curso_OO
 {
@@ -391,7 +392,10 @@ namespace Curso_OO
 
             // --------------------------------------------------------------------
 
+            /* Exemplo de um banco usando a classe Banco completinha.
             CultureInfo CI = CultureInfo.InvariantCulture;
+
+            Banco contaBancaria;
 
             Console.Write("Entre o número da conta: ");
             int conta = int.Parse(Console.ReadLine());
@@ -402,39 +406,578 @@ namespace Curso_OO
             Console.Write("Haverá depósito inicial (s/n)? ");
             char condicao = char.Parse(Console.ReadLine());
 
-            double inicial = 0;
             if (condicao == 's')
             {
                 Console.Write("Entre o valor de depósito inicial: ");
-                inicial = double.Parse(Console.ReadLine(), CI);
+                double inicial = double.Parse(Console.ReadLine(), CI);
+                contaBancaria = new Banco(conta, nome,  inicial);
+            } else
+            {
+                contaBancaria = new Banco(conta, nome);
             }
-            
 
-            Banco b = new Banco(nome, conta, inicial);
             Console.WriteLine();
 
             Console.WriteLine("Dados da Conta: ");
-            Console.WriteLine(b);
+            Console.WriteLine(contaBancaria);
             Console.WriteLine();
 
             Console.Write("Entre um valor para depósito: ");
             double qte = double.Parse(Console.ReadLine(), CI);
             Console.WriteLine("Dados da conta atualizados:");
-            b.AdicionarDeposito(qte);
-            Console.WriteLine(b);
+            contaBancaria.AdicionarDeposito(qte);
+            Console.WriteLine(contaBancaria);
 
             Console.WriteLine();
             Console.Write("Entre um valor para saque: ");
             qte = double.Parse(Console.ReadLine(), CI);
             Console.WriteLine("Dados da conta atualizados:");
-            b.AdicionarSaque(qte);
-            Console.WriteLine(b);
+            contaBancaria.AdicionarSaque(qte);
+            Console.WriteLine(contaBancaria);
+            */
 
-            b.Nome = "Eduardo";
-            b.NumConta = 123213;
-            b.Inicial = 231.32;
+            // ------------------------------------------------
+
+            /* Exemplo de Strutct usando a classe Point
+            Point p; // Não precisa do new Point();
+            p.X = 10;
+            p.Y = 20;
+            Console.WriteLine(p);
+            p = new Point(); // -> Cria um novo Point (0, 0)
+            Console.WriteLine(p);
+            */
+
+            // ---------------------------------------------------------------------------------
+
+            /* Operadores nulos e seus atributos
+            //double z = null // Erro
+            Nullable<double> x = null; // Exemplo de dizer que a variável x é opicional
+            double? y = null; // Exemplo de dizer que a variável y é opicional (mais simples)
+
+            Console.WriteLine(x.GetValueOrDefault()); // Pega o valor de X. Caso for nulo, imprime 0;
+            Console.WriteLine(x.HasValue); // Diz se existe valor na variável;
+            //Console.WriteLine(x.Value); // Pega o valor diretamente da variável, mas se o valor for nulo, da erro;
+
+            //Exemplo pra arrumar e não dar erro no x.Value.
+            if (x.HasValue)
+            {
+                Console.WriteLine(x.Value);
+            } else
+            {
+                Console.WriteLine("X is null");
+            }
+
+            double? a = null;
+            double? b = 10;
+
+            double c = a ?? 5; // Em c, vou jogar o valor de A, caso A for nulo, pega o valor 5;
+            double d = b ?? 3; // Em d, vou jogar o valor de B, caso B for nulo, pega o valor 3;
+
+            Console.WriteLine(c);
+            Console.WriteLine(d);
+            */
+
+            // ----------------------------------------------------------------------
+
+            /* Exemplo de vetor utilizando classe (Product)
+            int n = int.Parse(Console.ReadLine());
+
+            CultureInfo CI = CultureInfo.InvariantCulture;
+
+            Product[] vect = new Product[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                string name = Console.ReadLine();
+                double price = double.Parse(Console.ReadLine(), CI);
+
+                vect[i] = new Product { Name = name, Price = price };
+            }
+
+            double sum = 0.0;
+            for (int i = 0; i < n; i++)
+            {
+                sum += vect[i].Price;
+            }
+
+            double avg = sum / n;
+            Console.WriteLine("AVERAGE PRICE = " + avg.ToString("F2", CI));
+            */
+
+            // ---------------------------------------------------------------
+
+            /* Usando vetores junto com classes, pede o nome, quarto e o email, guarda na classe
+             * Room, nas posições dos números dos quartos e depois imprime em ordem crescente.
+
+            Console.Write("How many rooms will be rented? ");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            Rooms[] vect = new Rooms[10];
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine("Rent #" + i);
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Email: ");
+                string email = Console.ReadLine();
+                Console.Write("Room: ");
+                int room = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                vect[room] = new Rooms { Name = name, Email = email, Room = room };
+                
+            }
+
+            Console.WriteLine("Busy rooms: ");
+            for (int i = 0; i < vect.Length; i++)
+            {
+                if (vect[i] != null)
+                {
+                    Console.WriteLine(vect[i].Room + ": " + vect[i].Name + ", " + vect[i].Email);
+                }
+            }
+            */
+
+            // ----------------------------------------------------
+
+            /* Calculadora usando vetor para somar quantos números você quiser
+            int s1 = Calculadora.Sum(2, 3, 4, 2, 13, 123);
+            int s2 = Calculadora.Sum(//Quantos números você quiser somar);
+
+            Console.WriteLine(s1);
+            */
+
+            // ----------------------------------------------------------
+
+            /* Exemplo de ref e out
+            int a = 10; // variável a precisa ser iniciada.
+            Calculadora.Triplo(ref a); // ref pega o resultado na classe calculadora e retorna aqui.
+            Console.WriteLine(a);
+
+            int b = 10; 
+            int triple;// Não obriga o usuário a iniciar um valor
+            Calculadora.Triple(b, out triple); // out pega a variavel result na classe calculadora e ela na nossa variável triple;
+            Console.WriteLine(triple);
+            */
+
+            // -----------------------------------------------------
+
+            /* Exemplo de como utilizar o foreach
+            string[] vect = new string[] { "Maria", "Bob", "Alex" };
+
+            foreach (string nome in vect)
+            {
+                Console.WriteLine(nome); // Para cada nome no vetor, imprima ele.
+            }
+            */
+
+            // --------------------------------------------------------
+
+            /* Exemplo de listas
+            List<string> list = new List<string>(); // Lista vazia
+            List<int> lista = new List<int> { 1, 2, 3, 4}; // lista c/ elementos iniciais
+            */
+
+            // ------------------------------------------------------------
+
+            /* Exemplos de utilizações de listas;
+            List<string> list = new List<string>();
+            list.Add("Maria"); // Adiciona um elemento do tipo da sua lista ao final dela.
+            list.Insert(2, "Marco"); // Adiciona um elemento do tipo da sua lista no lugar que você quiser.
+            list.Count(); // Conta quantos elementos tem em uma lista.
+            string s1 = list.Find(x => x[0] == 'A'); // Recebe uma Lambda ou uma função que retorna verdadeiro ou falso caso ache o primeiro elemento, que no exemplo, contém a letra A na inicial.
+            string s2 = list.FindLast(x => x[0] == 'A'); // Recebe uma Lambda ou uma função que retorna verdadeiro ou falso caso ache o ultimo elemento, que no exemplo, contém a letra A na inicial.
+            int pos1 = list.FindIndex(x => x[0] == 'A'); // Recebe uma Lambda ou uma função que retorna verdadeiro ou falso caso ache o primeiro elemento, pegando assim, sua posição na lista (index).
+            int pos2 = list.FindLastIndex(x => x[0] == 'A'); // Recebe uma Lambda ou uma função que retorna verdadeiro ou falso caso ache o ultimo elemento, pegando assim, sua posição na lista (index).
+            List<string> list2 = list.FindAll(x => x.Length == 5); // Recebe uma Lambda ou uma função que retorna verdadeiro ou falso caso exista um elemento ou mais com 5 caracter, ele irá mostrar.
+            list.Remove("Maria"); // Remove certo elemento da lista;
+            list.RemoveAll(x => x[0] == 'M'); // Remove todos os elementos que começam com a letra M.
+            */
+
+            // ------------------------------------------------------------------------
+
+            /* Mesmo exemplo do banco, adicionando uma porcentagem de salário a um determinado ID, usando listas (Meio complexo)
+            CultureInfo CI = CultureInfo.InvariantCulture;
+
+            Console.Write("How many employees will be registered? ");
+            int n = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            List<Employee> list = new List<Employee>();
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine("Emplyoee #" + i);
+                Console.Write("Id: ");
+                int id = int.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Salary: ");
+                double salary = double.Parse(Console.ReadLine(), CI);
+                Console.WriteLine();
+
+                list.Add(new Employee(id, name, salary));
+
+            }
+
+            Console.Write("Enter the employee id that will have salary increase: ");
+            double newSalary = double.Parse(Console.ReadLine(), CI);
+
+            Employee emp = list.Find(x => x.Id == newSalary);
+            if (emp != null)
+            {
+                Console.Write("Enter the percentage: ");
+                double percentage = double.Parse(Console.ReadLine(), CI);
+                emp.increaseSalary(percentage);
+            }
+            else
+            {
+                Console.WriteLine("This id does not exist!");
+            }
+
+            Console.WriteLine("Updated list of employees: ");
+            foreach (Employee obj in list)
+            {
+                Console.WriteLine(obj);
+            }   
+            */
+
+            // -----------------------------------------------------
+
+            /* Básico sobre matriz
+            double[,] matriz = new double[2, 3];
+
+            Console.WriteLine(matriz.Length); // Quantos elementos a matriz possui.
+            Console.WriteLine(matriz.Rank); // Quanto é a quantidade de linhas da matriz
+            Console.WriteLine(matriz.GetLength(0)); // Dimensão 0 da matriz tem dimensão 2 - Linhas
+            Console.WriteLine(matriz.GetLength(1)); // Dimensão 0 da matriz tem dimensão 3 - Colunas
+            */
+
+            // ---------------------------------------------------------
+
+            /* Exemplo de matriz, além de ver sua diagonal e a soma dos números negativos.
+            Console.Write("How many collums and lines do u want? ");
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] matriz = new int[n, n];
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] s = Console.ReadLine().Split(' ');
+
+                for (int j = 0; j < n; j++)
+                {
+                    matriz[i, j] = int.Parse(s[j]);
+                }
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Main Diagonal: ");
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine(matriz[i, i] + " ");
+            }
+            Console.WriteLine();
+
+            int count = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (matriz[i, j] < 0) {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine("There is " + count + " negatives numbers");
+            */
+
+            // ------------------------------------------------------------
+
+            /*Matriz que ao você escolher um número dela, mostra os números à direita, esquerda, em cima e embaixo do número escolhido.
+            Console.Write("How many lines and collums do u want? ");
+            string[] s = Console.ReadLine().Split(' ');
+            int M = int.Parse(s[0]);
+            int N = int.Parse(s[1]);
+
+            int[,] matriz = new int[M, N];
+
+            for (int i = 0; i < M; i++)
+            {
+                string[] linha = Console.ReadLine().Split(' ');
+
+                for (int j = 0; j < N; j++)
+                {
+                    matriz[i, j] = int.Parse(linha[j]);
+                }
+            }
+            Console.WriteLine();
 
 
+            int number = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < M; i++)
+            {
+                for (int j = 0; j < N; j++) {
+                    if(matriz[i, j] == number)
+                    {
+                        Console.WriteLine("Position " + i + ", " + j);
+                        if (j > 0)
+                        {
+                            Console.WriteLine("Left: " + matriz[i, j - 1]);
+                        }
+                        if (i > 0)
+                        {
+                            Console.WriteLine("Up: " + matriz[i - 1, j]);
+                        }
+                        if (j < N -1)
+                        {
+                            Console.WriteLine("Right: " + matriz[i, j + 1]);
+                        }
+                        if (i < M - 1)
+                        {
+                            Console.WriteLine("Left: " + matriz[i + 1, j]);
+                        }
+
+                    }
+                }
+            }
+            */
+
+            // --------------------------------------------------------------------
+
+            /* Exemplo de Switch
+            int x = int.Parse(Console.ReadLine());
+            string day;
+
+            switch (x)
+            {
+                case 1:
+                    day = "Sunday";
+                    break;
+                case 2:
+                    day = "Monday";
+                    break;
+                case 3:
+                    day = "Tuesday";
+                    break;
+                // ... Infinitos case
+                default:
+                    day = "Invalid value";
+                    break;
+
+
+            }
+
+            Console.WriteLine("Day: " + day);
+            */
+
+            // -----------------------------------------------
+
+            /* Condição ternária, opcional ao if-else
+             - Estrutura: (condição) ? valor_se_verdadeiro : valor_se_falso
+             Exemplo: (2 > 4) ? 50 : 80 ----------> Retorna 80;
+             Exemplo2: (10 != 3) ? "Maria" : "Alex" ---------> Retorna Maria
+            */
+
+            // ---------------------------------------------
+
+            /* String tipos
+            string original = "abcde FGHIJ ABC abc DEFG    ";
+
+            string s1 = original.ToUpper();
+            string s2 = original.ToLower();
+            
+            string s3 = original.Trim(); // Remove os espaços em branco, antes e dps
+            int n1 = original.IndexOf("bc");
+            int n2 = original.LastIndexOf("bc");
+
+            string s4 = original.Substring(3); // Começa a contar a partir do index 3;
+            string s5 = original.Substring(3, 5); // Começa a contar a partir do index 3 e só mostra os próx 5 elementos.
+            
+            string s6 = original.Replace('a', 'x'); // Troca o a por x
+            string s7 = original.Replace("abc", "xy");
+
+            bool b1 = String.IsNullOrEmpty(original); // Testa se o conteúdo é vazio ou nulo.
+            bool b2 = String.IsNullOrWhiteSpace(original); // Testa se o conteúdo é vazio ou tem espaço em branco.
+
+            Console.WriteLine(original);
+            Console.WriteLine(s1);
+            Console.WriteLine(s2);
+            Console.WriteLine(s3);
+            Console.WriteLine(n1);
+            Console.WriteLine(n2);
+            Console.WriteLine(s4);
+            Console.WriteLine(s5);
+            Console.WriteLine(s6);
+            Console.WriteLine(s7);
+            Console.WriteLine(b1);
+            Console.WriteLine(b2);
+            */
+
+            // --------------------------------------------
+
+            /* Date tipos
+            DateTime d1 = DateTime.Now; // Hora atual
+            DateTime d2 = new DateTime(2018, 11, 25);
+            DateTime d3 = new DateTime(2018, 11, 25, 20, 45, 3);
+            DateTime d4 = new DateTime(2018, 11, 25, 20, 45, 3, 500);
+
+            DateTime d5 = DateTime.Today; // Data de hoje com o horário zerado.
+            DateTime d6 = DateTime.UtcNow; // Horario em Greewnwetch;
+
+            DateTime d7 = DateTime.Parse("2000-08-15");
+            DateTime d8 = DateTime.Parse("2000-08-15 13:05:58");
+            DateTime d9 = DateTime.Parse("15/08/2000");
+            DateTime d10 = DateTime.Parse("15/08/2000 13:04:12");
+
+            DateTime d11 = DateTime.ParseExact("2000-08-15", "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateTime d12 = DateTime.ParseExact("21/11/2001 13:12:12", "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+            Console.WriteLine(d1);
+            Console.WriteLine(d2);
+            Console.WriteLine(d3);
+            Console.WriteLine(d4);
+            Console.WriteLine(d5);
+            Console.WriteLine(d6);
+            Console.WriteLine(d7);
+            Console.WriteLine(d8);
+            Console.WriteLine(d9);
+            Console.WriteLine(d10);
+            Console.WriteLine(d11);
+            Console.WriteLine(d12);
+            Console.WriteLine();
+            Console.WriteLine(d1.Ticks); // Contando os ticks desde o ano 1;
+            */
+
+            // ----------------------------------------------
+            /* Mias dates tipos
+            DateTime d = new DateTime(2018, 11, 25, 20, 45, 3, 500);
+
+            Console.WriteLine(d);
+            Console.WriteLine("1) Date: " + d.Date);
+            Console.WriteLine("2) Day: " + d.Day);
+            Console.WriteLine("3) DayOfWeek: " + d.DayOfWeek);
+            Console.WriteLine("4) DayOfYear: " + d.DayOfYear);
+            Console.WriteLine("5) Hour: " + d.Hour);
+            Console.WriteLine("6) Kind: " + d.Kind);
+            Console.WriteLine("7) Millisecond: " + d.Millisecond);
+            Console.WriteLine("8) Minute: " + d.Minute);
+            Console.WriteLine("9) Second: " + d.Second);
+            Console.WriteLine("10) Ticks: " + d.Ticks);
+            Console.WriteLine("11) TimeOfDay: " + d.TimeOfDay);
+            Console.WriteLine("12) Mouth: " + d.Month);
+            Console.WriteLine("13) Year: " + d.Year);
+
+            Console.WriteLine(d.ToLongDateString()); // quarta feira, 22 de agosto de 2000.
+            Console.WriteLine(d.ToLongTimeString());
+            Console.WriteLine(d.ToShortDateString());
+            Console.WriteLine(d.ToShortTimeString());
+
+            // Operações com Datetime
+            DateTime d2 = d.AddHours(2);
+            DateTime d3 = d.AddMinutes(3);
+
+            DateTime d4 = new DateTime(200, 10, 18);
+            DateTime d5 = new DateTime(200, 10, 10);
+            TimeSpan t = d4.Subtract(d5);
+
+            Console.WriteLine(d);
+            Console.WriteLine(d2);
+            Console.WriteLine(d3);
+            Console.WriteLine(t);
+            */
+
+            // --------------------------------------------------
+
+            /* Time span tipos
+            TimeSpan t1 = new TimeSpan();// 00:00:00
+            TimeSpan t2 = new TimeSpan(0, 1, 30); //h, m, s
+            TimeSpan t3 = new TimeSpan(9000000000); // converte nanosegundos em hora/min/seg
+            TimeSpan t4 = new TimeSpan(1, 2, 11, 21); // d, h, m, s
+            TimeSpan t5 = new TimeSpan(1, 2, 11, 21, 321); // d, h, m, s, ms
+
+            TimeSpan t6 = TimeSpan.FromDays(1.5); // Cria uma data contendo 1 dia e meio.
+            TimeSpan t7 = TimeSpan.FromHours(1.5);
+            TimeSpan t8 = TimeSpan.FromMinutes(1.5);
+            TimeSpan t9 = TimeSpan.FromSeconds(1.5);
+            TimeSpan t10 = TimeSpan.FromMilliseconds(1.5);
+            TimeSpan t11 = TimeSpan.FromTicks(213213902L);
+
+
+            Console.WriteLine(t1);
+            Console.WriteLine(t2);
+            Console.WriteLine(t3);
+            Console.WriteLine(t4);
+            Console.WriteLine(t5);
+            Console.WriteLine(t6);
+            Console.WriteLine(t7);
+            Console.WriteLine(t8);
+            Console.WriteLine(t9);
+            Console.WriteLine(t10);
+            Console.WriteLine(t11);
+
+            Console.WriteLine();
+            Console.WriteLine(t2.Ticks);
+            */
+
+            // --------------------------------------------------------
+
+            /* Mais Span tipos
+            TimeSpan t = new TimeSpan(2, 3, 5, 7, 11);
+            TimeSpan tt = new TimeSpan(4, 6, 1, 32, 61);
+
+            TimeSpan t1 = TimeSpan.MaxValue;
+            TimeSpan t2 = TimeSpan.MinValue;
+            TimeSpan t3 = TimeSpan.Zero;
+
+            Console.WriteLine(t1);
+            Console.WriteLine(t2);
+            Console.WriteLine(t3);
+
+            Console.WriteLine("1) Day: " + t.Days);
+            Console.WriteLine("2) Hour: " + t.Hours);
+            Console.WriteLine("3) Millisecond: " + t.Milliseconds);
+            Console.WriteLine("4) Minute: " + t.Minutes);
+            Console.WriteLine("5) Second: " + t.Seconds);
+            Console.WriteLine("6) Ticks: " + t.Ticks);
+
+            Console.WriteLine("7) TotalDays: " + t.TotalDays);
+            Console.WriteLine("8) TotalHours: " + t.TotalHours);
+            Console.WriteLine("9) TotalMinutes: " + t.TotalMinutes);
+            Console.WriteLine("10) TotalSeconds: " + t.TotalSeconds);
+            Console.WriteLine("11) TotalMilliseconds: " + t.TotalMilliseconds);
+
+            TimeSpan sum = t1.Add(t2); // Soma de 2 timespan;
+            TimeSpan dif = t1.Subtract(t2);
+            TimeSpan multi = t1.Multiply(2);
+            TimeSpan div = t1.Divide(5);
+
+            Console.WriteLine(sum);
+            Console.WriteLine(dif);
+            Console.WriteLine(multi);
+            Console.WriteLine(div);
+            */
+
+            // -----------------------------------------------------
+            
+            /* Utilizando Local e UTC
+            DateTime d1 = new DateTime(2000, 8, 15, 13, 5, 58, DateTimeKind.Local);
+            DateTime d2 = new DateTime(2000, 8, 15, 13, 5, 58, DateTimeKind.Utc);
+            DateTime d3 = new DateTime(2000, 8, 15, 13, 5, 58);
+
+            Console.WriteLine("d1: " + d1);
+            Console.WriteLine("d1 Kind: " + d1.Kind);
+            Console.WriteLine("d1 to Local: " + d1.ToLocalTime());
+            Console.WriteLine("d1 to Utc: " + d1.ToUniversalTime());
+
+            DateTime d2 = DateTime.Parse("2000-08-15T13:05:54Z") // Data no UTC, mas dependendo
+            do computador do usuário, essa data é alterada para seu fuso-horário.
+
+            Console.WriteLine(d2);
+            */
 
             Console.ReadLine();
         }

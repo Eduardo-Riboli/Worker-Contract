@@ -2,7 +2,7 @@
 using System.Globalization;
 namespace Curso_OO
 {
-    internal class Produto2
+    internal class Produto2 
     {
         private string _nome; 
         private double _preco; // Usando AUTOPROPERTIES -> public double Preco { get; private set};

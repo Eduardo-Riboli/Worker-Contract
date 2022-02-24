@@ -1,6 +1,6 @@
 ﻿namespace Curso_OO
 {
-    internal class ConversorDeMoeda
+    internal class ConversorDeMoeda 
     {
         public static double Conversor(double moeda, double valor)
         {

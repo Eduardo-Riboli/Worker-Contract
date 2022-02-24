@@ -2,7 +2,7 @@
 
 namespace Curso_OO
 {
-    internal class Triangulo
+    internal class Triangulo 
     {
         public double A;
         public double B;

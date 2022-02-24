@@ -2,7 +2,7 @@
 
 namespace Curso_OO
 {
-    internal class Trabalhador
+    internal class Trabalhador 
     {
         CultureInfo CI = CultureInfo.InvariantCulture;
 

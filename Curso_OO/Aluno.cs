@@ -1,6 +1,6 @@
 ﻿namespace Curso_OO
 {
-    internal class Aluno
+    internal class Aluno 
     {
         public string Nome;
         public double Nota1;

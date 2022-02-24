@@ -2,30 +2,30 @@
 
 namespace Curso_OO
 {
-    internal class Banco
+    internal class Banco 
     {
-        public string _nome;
+        public string Nome { get; set; }
         public int NumConta { get; private set; }
 
         public double Inicial { get; private set; }
 
         CultureInfo CI = CultureInfo.InvariantCulture;
 
-        public Banco(string nome, int numeroconta, double inicial)
+        public Banco(int numConta, string nome)
         {
-            _nome = nome; NumConta = numeroconta; Inicial = inicial; 
+            NumConta = numConta;
+            Nome = nome;
         }
 
-        public string Nome
+        public Banco(int numConta, string nome, double inicial) : this(numConta, nome)
         {
-            get { return _nome; }
-            set { _nome = value; }
+            AdicionarDeposito(inicial);
         }
 
 
         public override string ToString()
         {
-            return "Conta " + NumConta + ", Titular: " + _nome + ", Saldo: $" + SaldoTotal().ToString("F2", CI);
+            return "Conta " + NumConta + ", Titular: " + Nome + ", Saldo: $" + SaldoTotal().ToString("F2", CI);
         }
 
         public double SaldoTotal()
@@ -38,6 +38,7 @@ namespace Curso_OO
             Inicial += quantidade;
         }
 
+        // Taxa de 5 reais no saque.
         public void AdicionarSaque(double quantidade)
         {
             Inicial -= quantidade + 5;

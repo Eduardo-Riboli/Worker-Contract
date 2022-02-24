@@ -2,7 +2,7 @@
 using System.Globalization;
 namespace Curso_OO
 {
-    internal class Produto
+    internal class Produto 
     {
         public string Nome;
         public double Preco;

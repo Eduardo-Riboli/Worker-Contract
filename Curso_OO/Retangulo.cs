@@ -1,6 +1,6 @@
 ﻿namespace Curso_OO
 {
-    internal class Retangulo
+    internal class Retangulo 
     {
         public double Largura;
         public double Altura;
